@@ -1,0 +1,27 @@
+{
+  "name": "math",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.ts",
+  "dependencies": {
+    "@xstate/react": "^0.8.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "xstate": "^4.12.0"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "typescript": "^3.9.7"
+  },
+  "scripts": {
+    "start": "parcel ./public/index.html",
+    "build": "parcel build ./public/index.html"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
