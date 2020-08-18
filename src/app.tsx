@@ -50,11 +50,11 @@ const machine = Machine<Context>(
       home: {
         on: {
           ONE: {
-            actions: [assign({ mode: 1 }), "fullscreen"],
+            actions: [assign({ mode: 1 }), "requestFullscreen"],
             target: "sum"
           },
           TWO: {
-            actions: [assign({ mode: 2 }), "fullscreen"],
+            actions: [assign({ mode: 2 }), "requestFullscreen"],
             target: "sum"
           }
         }
@@ -76,8 +76,8 @@ const machine = Machine<Context>(
   },
   {
     actions: {
-      fullscreen: () => {
-        if (!document.fullscreenElement) {
+      requestFullscreen: () => {
+        if (navigator.maxTouchPoints > 1 && !document.fullscreenElement) {
           document.documentElement.requestFullscreen();
         }
       },
@@ -114,9 +114,10 @@ export function App() {
           <>
             <i onClick={() => send("HOME")}>&#10005;</i>
             <h1>
-              {`${current.context.problem.first}`}
+              <div>{`${current.context.problem.first}`}</div>
               <span>+</span>
-              {`${current.context.problem.second}`}
+              <div>{`${current.context.problem.second}`}</div>
+              <span>=</span>?
             </h1>
             <a onClick={() => send("RESULT")}>show result</a>
           </>
@@ -127,7 +128,8 @@ export function App() {
             <h2>
               {`${current.context.problem.first}`}
               <span>+</span>
-              {`${current.context.problem.second}`}=
+              {`${current.context.problem.second}`}
+              <span>=</span>
               {`${current.context.result}`}
             </h2>
             <a onClick={() => send("SUM")}>next!</a>
