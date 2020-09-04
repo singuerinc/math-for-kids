@@ -105,9 +105,13 @@ export function App() {
       <section style={{ backgroundColor: randomColor() }}>
         {current.matches("home") && (
           <>
-            <h1>Math!</h1>
-            <a onClick={() => send("ONE")}>one digit</a>
-            <a onClick={() => send("TWO")}>two digits</a>
+            <h1 data-cy="title">Math!</h1>
+            <a data-cy="btn-one" onClick={() => send("ONE")}>
+              one digit
+            </a>
+            <a data-cy="btn-two" onClick={() => send("TWO")}>
+              two digits
+            </a>
           </>
         )}
         {current.matches("sum") && (
